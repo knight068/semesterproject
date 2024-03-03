@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainScreen"
+    android:orientation="vertical"
+    android:background="@color/LogInBackground">
+
+
+    <LinearLayout
+        android:id="@+id/llProfile"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ribble_effect"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/picture_oval"
+            android:src="@drawable/profile"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="USERNAME"
+            android:layout_gravity="center"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/llElectricity"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@drawable/ribble_effect"
+        >
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:src="@drawable/electrecity"
+            android:layout_margin="5dp"
+            android:background="@drawable/picture_oval"
+            />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Electricity Bills"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/llWater"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@drawable/ribble_effect"
+        >
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:src="@drawable/water"
+            android:layout_margin="5dp"
+            android:background="@drawable/picture_oval"
+            />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Water Bills"/>
+
+            />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/llPhone"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@drawable/ribble_effect"
+        >
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/phoneee"
+            android:layout_margin="5dp"
+            android:background="@drawable/picture_oval"
+            />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="phone Bills"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/llInternet"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@drawable/ribble_effect"
+        >
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="36dp"
+            android:layout_height="37dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/picture_oval"
+            android:src="@drawable/internet" />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Internet Bills"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/llOther"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@drawable/ribble_effect"
+        >
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:src="@drawable/bill"
+            android:layout_margin="5dp"
+            android:background="@drawable/picture_oval"
+            />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Other Bills"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
