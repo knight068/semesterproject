@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Budget"
+    android:gravity="start"
+    android:orientation="vertical"
+    android:background="@color/LogInBackground">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Budget"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+
+        />
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_calculate_24"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/budgetTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Budget:"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        tools:visibility="visible"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/budgetAmmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        tools:visibility="visible"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/currnetBudgetStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        tools:visibility="visible"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/currentBudgetEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        tools:visibility="visible"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tvStartBudgetDate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/et_log_in"
+        android:hint="Start Date"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:gravity="left"
+         />
+
+    <TextView
+        android:id="@+id/tvEndBudgetDate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/et_log_in"
+        android:hint="Ending Date"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:gravity="left"
+        />
+    <EditText
+        android:id="@+id/etBudgetTotalAmount"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/et_log_in"
+        android:hint="Bill Total Amount"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/etLogInPassowrd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPleasesInterEmail"
+        android:inputType="number"/>
+    <ProgressBar
+        android:id="@+id/pbBudget"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="60dp"
+        android:scaleY="2"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:visibility="gone"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSaveBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/loginbutton"
+        android:outlineAmbientShadowColor="@color/white"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:layout_marginTop="50dp"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnUpdateBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/loginbutton"
+        android:outlineAmbientShadowColor="@color/white"
+        android:text="Update"
+        android:textColor="@color/white"
+        android:layout_marginTop="50dp"
+        tools:visibility="visible"
+        android:visibility="gone"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:id="@+id/llBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/ribble_effect"
+        android:padding="10dp"
+        >
+        <LinearLayout
+            android:id="@+id/llEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+            <ImageButton
+                android:id="@+id/ibProfile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_profile_24"
+                android:background="@color/LogInBackground"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llBudget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+
+            >
+            <ImageButton
+                android:id="@+id/ibBudget"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/baseline_calculate_24"
+                android:background="@color/LogInBackground"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Budget"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llBills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+
+            >
+            <ImageButton
+                android:id="@+id/ibBills"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_bills_24"
+                android:background="@color/LogInBackground"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bills"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llTips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+
+            >
+            <ImageButton
+                android:id="@+id/ibTips"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_tips_and_tricks"
+                android:background="@color/LogInBackground"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tips"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llReminders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+
+
+            >
+            <ImageButton
+                android:id="@+id/ibReminders"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_reminder_24"
+                android:background="@color/LogInBackground"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remind"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -26,7 +26,7 @@ class myRecyclerActivity : AppCompatActivity() {
         recyclerView=findViewById(R.id.recyclerView)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager= LinearLayoutManager(this)
-        foodAdapter= FoodsAdapter(mutableListOf())
+        foodAdapter= FoodsAdapter(applicationContext,mutableListOf())
         recyclerView.adapter=foodAdapter
         foodAdapter.onItemClick= {
             val intent = Intent(this,DetailedRecycler::class.java)
@@ -38,41 +38,23 @@ class myRecyclerActivity : AppCompatActivity() {
             dialogFun()
         }
     }
-
-
-    //for adding a photo from the gallery
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
-            val imageUri = data.data
-            val imageStream = contentResolver.openInputStream(imageUri!!)
-            val selectedImage = BitmapFactory.decodeStream(imageStream)
-            val id = System.currentTimeMillis()
-            // val name = "something"
-            val photo = Foods( name, imageUri)
-            foodAdapter.addPhoto(photo)
-        }
-    }
-    //test test
-
-    //function for and custom dialog to appear with the add button is pressed
     private fun dialogFun () {
-        var btnCancel = findViewById<Button>(R.id.btnCancel)
-        var btnAdd = findViewById<Button>(R.id.btnAdd)
-        var etAddWaterBill = findViewById<EditText>(R.id.etAddWaterBill)
+
         val view = View.inflate(this, R.layout.add_dialog, null)
         val builder = AlertDialog.Builder(this)
         builder.setView(view)
         val dialog = builder.create()
         dialog.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        var btnCancel = view.findViewById<Button>(R.id.btnCancel)
+        var btnAdd = view.findViewById<Button>(R.id.btnAdd)
+        var etAddWaterBill = view.findViewById<EditText>(R.id.etAddWaterBill)
         btnCancel.setOnClickListener {
             dialog.dismiss()
         }
         btnAdd.setOnClickListener {
-            var etAddWaterBill = findViewById<EditText>(R.id.etAddWaterBill)
-            var etAddDateWater = findViewById<EditText>(R.id.etAddDateWater)
+            var etAddWaterBill = view.findViewById<EditText>(R.id.etAddWaterBill)
+            var etAddDateWater = view.findViewById<EditText>(R.id.etAddDateWater)
             var tvAverageElectricity = findViewById<TextView>(R.id.tvAverageElectricity)
             var valu1: String =
                 (etAddWaterBill.text.toString() + "\n" + etAddDateWater.text.toString())
@@ -94,4 +76,25 @@ class myRecyclerActivity : AppCompatActivity() {
 
 
     }
+
+
+    //for adding a photo from the gallery
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
+            val imageUri = data.data
+            val imageStream = contentResolver.openInputStream(imageUri!!)
+            val selectedImage = BitmapFactory.decodeStream(imageStream)
+            val id = System.currentTimeMillis()
+            // val name = "something"
+            val photo = Foods( name, imageUri)
+            foodAdapter.addPhoto(photo)
+            //foodAdapter.notifyItemInserted(foodAdapter.itemCount)
+        }
+    }
+    //test test
+
+    //function for and custom dialog to appear with the add button is pressed
+
 }

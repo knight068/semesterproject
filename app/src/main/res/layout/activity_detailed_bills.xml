@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="myRecycler.DetailedBills"
+    android:orientation="vertical"
+    android:background="@color/LogInBackground">
+    <ImageView
+        android:layout_margin="5dp"
+        android:background="@drawable/ribble_effect"
+        android:id="@+id/ivDetailedbill"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/water"
+        android:padding="5dp"
+        />
+    <TextView
+        android:id="@+id/tvBilldes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Bill Info"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+
+        />
+    <TextView
+        android:id="@+id/tvBillDetailedValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Bill Info"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        tools:visibility="visible"
+        />
+    <TextView
+        android:id="@+id/tvBillDetailedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Bill Info"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+</LinearLayout>

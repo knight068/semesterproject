@@ -25,7 +25,7 @@
         android:hint="Total Sum of you bill"
         android:textSize="20sp"
         android:inputType="number"/>
-    <EditText
+    <TextView
         android:padding="5dp"
         android:layout_marginTop="20dp"
         android:id="@+id/etAddDateWater"
@@ -35,35 +35,7 @@
         android:hint="Date of your bill"
         android:textSize="20sp"
         android:inputType="date"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
 
-        android:padding="5dp"
-        >
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:text="Add"
-            android:gravity="center"
-            android:background="@drawable/loginbutton"
-            android:textColor="@color/white"/>
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:text="Cancel"
-            android:gravity="center"
-            android:background="@drawable/loginbutton"
-            android:textColor="@color/white"/>
-    </LinearLayout>
 
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.semesterproject1.R
 class DetailedRecycler : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,7 @@ class DetailedRecycler : AppCompatActivity() {
             var textView : TextView = findViewById(R.id.tvBillsInfo)
             var imageView : ImageView = findViewById(R.id.ivDetailed)
             textView.text =food.name
-            imageView.setImageURI(food.uri)
+            Glide.with(applicationContext).load(food.uri).into(imageView)
         }
     }
 }
