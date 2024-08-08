@@ -49,6 +49,26 @@ interface Api {
         @Path("userId")userId:String
     ):Call<NetBillsResponse>
 
+    @GET("api/getelectbills/{userId}")
+    fun getElecBills(
+        @Path("userId")userId:String
+    ):Call<NetBillsResponse>
+
+    @GET("api/getwaterbills/{userId}")
+    fun getWaterBills(
+        @Path("userId")userId:String
+    ):Call<NetBillsResponse>
+
+    @GET("api/getphonebills/{userId}")
+    fun getPhoneBills(
+        @Path("userId")userId:String
+    ):Call<NetBillsResponse>
+
+    @GET("api/getOtherbills/{userId}")
+    fun getOtherBills(
+        @Path("userId")userId:String
+    ):Call<NetBillsResponse>
+
     @GET("api/getUserBudget/{userId}")
     fun getBudget(
         @Path("userId")userId:String

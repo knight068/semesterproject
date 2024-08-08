@@ -67,9 +67,7 @@
         <activity
             android:name="myRecycler.AddingToRecyclerTest"
             android:exported="false" />
-        <activity
-            android:name="myRecycler.recyclerTest"
-            android:exported="false" />
+
         <activity
             android:name="myRecycler.InternetRecycler"
             android:exported="false" />
