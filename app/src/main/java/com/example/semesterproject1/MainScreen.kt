@@ -14,8 +14,16 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.semesterproject1.storage.SharedPrefManager
+import de.hdodenhof.circleimageview.CircleImageView
+import myRecycler.ClothRecycler
+import myRecycler.ElectricityRecycler
+import myRecycler.FoodRecycler
 import myRecycler.InternetRecycler
+import myRecycler.OtherRecycler
+import myRecycler.PhoneRecycler
 import myRecycler.TipsAndTricks
+import myRecycler.UserReminders
+import myRecycler.WaterRecycler
 import myRecycler.myRecyclerActivity
 
 class MainScreen : AppCompatActivity() {
@@ -27,11 +35,22 @@ class MainScreen : AppCompatActivity() {
         Log.i("userId",userId!!)
         bindUser()
 
-        var llProfile = findViewById<LinearLayout>(R.id.llProfile)
+
         bindRecyclers()
         bindBottomNavigation()
+        bindUserAndNotifcation()
+
+    }
+
+    private fun bindUserAndNotifcation() {
+        var llProfile = findViewById<LinearLayout>(R.id.llProfile)
         llProfile.setOnClickListener {
             val intent:Intent=Intent(this,ProfileEdit::class.java)
+            startActivity(intent)
+        }
+        val ciReminders=findViewById<CircleImageView>(R.id.ciReminders)
+        ciReminders.setOnClickListener {
+            val intent=Intent(this,UserReminders::class.java)
             startActivity(intent)
         }
     }
@@ -105,13 +124,14 @@ class MainScreen : AppCompatActivity() {
 
 
     private fun bindRecyclers(){
-        /*var llWater = findViewById<LinearLayout>(llWater)
-        var llPhone = findViewById<LinearLayout>(llPhone)
-        var llInternet = findViewById<LinearLayout>(llInternet)
-        var llOther =findViewById<LinearLayout>(llOther)*/
+        var llWater = findViewById<LinearLayout>(R.id.llWater)
+        var llPhone = findViewById<LinearLayout>(R.id.llPhone)
+        var llOther =findViewById<LinearLayout>(R.id.llOther)
+        var llFood =findViewById<LinearLayout>(R.id.llFood)
+        var llCloth=findViewById<LinearLayout>(R.id.llClothes)
         var llElectricity = findViewById<LinearLayout>(R.id.llElectricity)
         llElectricity.setOnClickListener{
-            val intent= Intent(this, myRecyclerActivity::class.java)
+            val intent= Intent(this, ElectricityRecycler::class.java)
             startActivity(intent)
         }
         var llInternet :LinearLayout=findViewById(R.id.llInternet)
@@ -119,19 +139,26 @@ class MainScreen : AppCompatActivity() {
             val intent= Intent(this, InternetRecycler::class.java)
             startActivity(intent)
         }
-        /* llWater.setOnClickListener{
-             val intent= Intent(this,WaterActivity::class.java)
-             startActivity(intent)
-         }
-         llPhone.setOnClickListener{
-             val intent= Intent(this,PhoneRecycler::class.java)
-             startActivity(intent)
-         }
-
-         llOther.setOnClickListener{
-             val intent= Intent(this,OtherRecycler::class.java)
-             startActivity(intent)
-         }*/
+       llWater.setOnClickListener{
+           val intent=Intent(this,WaterRecycler::class.java)
+           startActivity(intent)
+       }
+        llPhone.setOnClickListener{
+               val intent=Intent(this,PhoneRecycler::class.java)
+               startActivity(intent)
+        }
+        llCloth.setOnClickListener{
+            val intent=Intent(this,ClothRecycler::class.java)
+            startActivity(intent)
+        }
+        llFood.setOnClickListener{
+            val intent=Intent(this,FoodRecycler::class.java)
+            startActivity(intent)
+        }
+        llOther.setOnClickListener{
+            val intent=Intent(this,OtherRecycler::class.java)
+            startActivity(intent)
+        }
     }
     fun bindUser(){
         var tvUser =findViewById<TextView>(R.id.tvUserName)

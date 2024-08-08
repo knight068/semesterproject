@@ -4,8 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"
+        android:requestLegacyExternalStorage="true"/>
 
     <application
         android:allowBackup="true"
@@ -17,6 +19,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Semesterproject1"
         tools:targetApi="31">
+        <activity
+            android:name=".CreatingReport"
+            android:exported="false" />
+        <activity
+            android:name="myRecycler.UserReminders"
+            android:exported="false" />
+        <activity
+            android:name="myRecycler.OtherRecycler"
+            android:exported="false" />
+        <activity
+            android:name="myRecycler.ClothRecycler"
+            android:exported="false" />
+        <activity
+            android:name="myRecycler.FoodRecycler"
+            android:exported="false" />
+        <activity
+            android:name="myRecycler.PhoneRecycler"
+            android:exported="false" />
+        <activity
+            android:name="myRecycler.WaterRecycler"
+            android:exported="false" />
+        <activity
+            android:name="myRecycler.ElectricityRecycler"
+            android:exported="false" />
         <activity
             android:name="myRecycler.DetailedBills"
             android:exported="false" />

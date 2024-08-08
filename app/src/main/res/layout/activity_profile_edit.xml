@@ -99,6 +99,20 @@
              />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGoToReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/loginbutton"
+        android:outlineAmbientShadowColor="@color/white"
+        android:text="Financial Report"
+        android:textColor="@color/teal_200"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        />
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -109,7 +123,6 @@
         android:id="@+id/llBottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
         android:background="@drawable/ribble_effect"
         android:gravity="bottom"
         android:orientation="horizontal"

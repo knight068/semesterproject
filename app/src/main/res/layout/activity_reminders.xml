@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPleasesInterEmail"
-        android:inputType="number"/>
+        />
 
 
 
@@ -72,6 +72,18 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="1"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGoToReminders"
+        android:padding="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/loginbutton"
+        android:outlineAmbientShadowColor="@color/white"
+        android:text="View Reminders"
+        android:textColor="@color/white"
+        android:layout_marginTop="50dp"
+        />
     <LinearLayout
         android:id="@+id/llBottomNav"
         android:gravity="bottom"

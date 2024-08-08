@@ -148,6 +148,7 @@ class Budget : AppCompatActivity() {
                         var l =response.body()
                         Log.i("budgetUpdate",l.toString())
                         Toast.makeText(applicationContext,response.body()!!.message.toString(),Toast.LENGTH_SHORT).show()
+                        recreate()
                     }
 
                     override fun onFailure(call: Call<BudgetUpdateResponse>, t: Throwable) {
@@ -155,8 +156,8 @@ class Budget : AppCompatActivity() {
                     }
 
                 } )
-                val intent=Intent(this,MainScreen::class.java)
-                startActivity(intent)
+//                val intent=Intent(this,MainScreen::class.java)
+//                startActivity(intent)
 
 
             }

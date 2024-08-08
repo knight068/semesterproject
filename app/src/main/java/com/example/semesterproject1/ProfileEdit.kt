@@ -19,6 +19,11 @@ class ProfileEdit : AppCompatActivity() {
         setContentView(R.layout.activity_profile_edit)
         bindBottomNavigation()
         var circleProfilePicture=findViewById<CircleImageView>(R.id.ci_Profile)
+        val btnGoToReport:Button=findViewById(R.id.btnGoToReport)
+        btnGoToReport.setOnClickListener {
+            val intent=Intent(this,CreatingReport::class.java)
+            startActivity(intent)
+        }
 
         val btnLogOut :Button=findViewById(R.id.btn_LogOut)
         btnLogOut.setOnClickListener {
@@ -51,8 +56,6 @@ class ProfileEdit : AppCompatActivity() {
             startActivity(intent)
 
         }
-
-
         var ibTips : ImageButton =findViewById(R.id.ibTips)
         ibTips.setOnClickListener{
             val intent:Intent=Intent(this, TipsAndTricks::class.java)

@@ -39,6 +39,16 @@
             android:layout_gravity="center"
             android:textSize="15sp"/>
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ciReminders"
+            android:src="@drawable/ic_proflie_reminders_24"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="end|center"
+            />
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -46,7 +56,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/llElectricity"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:background="@drawable/ribble_effect"
         >
@@ -81,7 +91,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/llWater"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:background="@drawable/ribble_effect"
         >
@@ -115,7 +125,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/llPhone"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:background="@drawable/ribble_effect"
         >
@@ -149,7 +159,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/llInternet"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:background="@drawable/ribble_effect"
         >
@@ -181,9 +191,77 @@
     <LinearLayout
         android:layout_margin="5dp"
         android:layout_marginTop="20dp"
+        android:id="@+id/llFood"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@drawable/ribble_effect"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_gravity="center"
+            android:layout_width="36dp"
+            android:layout_height="37dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/picture_oval"
+            android:src="@drawable/hamburger" />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Food Bills"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/llClothes"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@drawable/ribble_effect"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_gravity="center"
+            android:layout_width="36dp"
+            android:layout_height="37dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/picture_oval"
+            android:src="@drawable/fashion" />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Clothing Bills"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/llOther"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:background="@drawable/ribble_effect"
         >
@@ -226,7 +304,7 @@
         android:orientation="horizontal"
         android:background="@drawable/ribble_effect"
         android:padding="10dp"
-        android:layout_marginTop="100dp">
+        >
         <LinearLayout
             android:id="@+id/llEditProfile"
             android:layout_width="wrap_content"

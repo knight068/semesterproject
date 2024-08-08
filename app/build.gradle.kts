@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.semesterproject1"
-        minSdk = 21
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -48,6 +48,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.google.android.gms:play-services-base:18.5.0")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("com.itextpdf:itextg:5.5.10")
+    implementation("androidx.compose.foundation:foundation-android:1.6.8")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

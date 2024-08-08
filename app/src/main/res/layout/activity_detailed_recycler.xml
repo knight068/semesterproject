@@ -5,14 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="myRecycler.DetailedRecycler"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/LogInBackground">
     <ImageView
         android:id="@+id/ivDetailed"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:scaleType="fitXY"
         android:src="@drawable/water"
+        android:background="@drawable/ribble_effect"
         android:padding="5dp"
+
         />
     <TextView
         android:id="@+id/tvBillsInfo"
@@ -20,7 +23,7 @@
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:text="Bill Info"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"

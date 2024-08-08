@@ -5,6 +5,8 @@ import com.example.semesterproject1.models.DefaultResponse
 import com.example.semesterproject1.models.GetBudgetResponse
 import com.example.semesterproject1.models.LogInResponse
 import com.example.semesterproject1.models.NetBillsResponse
+import com.example.semesterproject1.models.RemindersAddResponse
+import com.example.semesterproject1.models.RemindersResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -51,4 +53,17 @@ interface Api {
     fun getBudget(
         @Path("userId")userId:String
     ):Call<GetBudgetResponse>
+
+    @GET("/api/getReminder/{userId}")
+    fun getReminders(
+        @Path("userId")userId:String
+    ):Call<RemindersResponse>
+
+    @FormUrlEncoded
+    @POST("/api/AddReminder/{userId}")
+    fun postReminders(
+        @Path("userId")userId:String,
+        @Field("RemVal")RemVal:String,
+        @Field("RemDate")RemDate:String
+    ):Call<RemindersAddResponse>
 }

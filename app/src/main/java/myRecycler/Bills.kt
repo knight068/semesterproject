@@ -5,11 +5,11 @@ import android.os.Parcelable
 import android.os.Parcel
 
 data class Bills (
-    val description:String,val value:Double,val date:String, val uri: Uri
+    var description:String, var value:Float, var date:String, var uri: Uri
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
-        parcel.readDouble(),
+        parcel.readFloat(),
         parcel.readString()!!,
         parcel.readParcelable(Uri::class.java.classLoader)!!
     ) {
@@ -17,7 +17,7 @@ data class Bills (
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(description)
-        parcel.writeDouble(value)
+        parcel.writeFloat(value)
         parcel.writeString(date)
         parcel.writeParcelable(uri, flags)
     }
