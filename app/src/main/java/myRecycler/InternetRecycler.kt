@@ -2,6 +2,7 @@ package myRecycler
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -57,42 +58,11 @@ class InternetRecycler : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_internet_recycler)
+        getBills()
 
 
-        var userid=SharedPrefManager.getInstance(applicationContext).user!!._id.toString()
 
-        RetrofitClient.instance.getBills(userid).enqueue(object : Callback<NetBillsResponse>{
-            override fun onResponse(call: Call<NetBillsResponse>, response: Response<NetBillsResponse>) {
-                var temp=response.body().toString()
-                Log.i("temp body",temp)
-                var adapterList= mutableListOf<Bills>()
-                var tempUriForAdapter=Uri.parse("https://jpeg-optimizer.com/image/ads1.webp")
 
-                var tempList = response.body()!!.data4.NetData
-                for ( i in tempList){
-                    var tempBill :Bills= Bills("somthing", 500F,"some",tempUriForAdapter)
-                    tempBill.uri=Uri.parse(i.photo)
-                    tempBill.description=i.name
-                    tempBill.date=i.date
-                    tempBill.value=i.value.toFloat()
-                    adapterList.add(tempBill)
-                    Log.i("data5",tempBill.toString())
-                    foodAdapter.addPhoto(tempBill)
-                    foodAdapter.notifyDataSetChanged()
-
-                }
-                for (l in adapterList){
-                    Log.i("data6",l.toString())
-//                    foodAdapter.addPhoto(l)
-//                    foodAdapter.notifyDataSetChanged()
-                }
-
-            }
-
-            override fun onFailure(call: Call<NetBillsResponse>, t: Throwable) {
-                Toast.makeText(applicationContext,t.message.toString(),Toast.LENGTH_SHORT).show()
-            }
-        })
         findViewById<View>(android.R.id.content).setOnClickListener{
             foodAdapter.notifyDataSetChanged()
         }
@@ -164,6 +134,58 @@ class InternetRecycler : AppCompatActivity() {
 
 
         }
+    }
+
+    private suspend fun updateRecycler() {
+        delay(500L)
+        foodAdapter.notifyDataSetChanged()
+    }
+
+    private fun getBills() {
+        var userid=SharedPrefManager.getInstance(applicationContext).user!!._id.toString()
+        val mProgressDialog = ProgressDialog(this)
+        mProgressDialog.setTitle("Please wait")
+//            mProgressDialog.setMessage("This is MESSAGE")
+        mProgressDialog.show()
+
+
+        RetrofitClient.instance.getBills(userid).enqueue(object : Callback<NetBillsResponse>{
+            override fun onResponse(call: Call<NetBillsResponse>, response: Response<NetBillsResponse>) {
+                var temp=response.body().toString()
+                Log.i("temp body",temp)
+                var adapterList= mutableListOf<Bills>()
+                var tempUriForAdapter=Uri.parse("https://jpeg-optimizer.com/image/ads1.webp")
+
+                var tempList = response.body()!!.data4.NetData
+                for ( i in tempList){
+                    var tempBill :Bills= Bills("somthing", 500F,"some",tempUriForAdapter)
+                    tempBill.uri=Uri.parse(i.photo)
+                    foodAdapter.notifyDataSetChanged()
+                    tempBill.description=i.name
+                    tempBill.date=i.date
+                    tempBill.value=i.value.toFloat()
+                    adapterList.add(tempBill)
+                    Log.i("data5",tempBill.toString())
+                    foodAdapter.addPhoto(tempBill)
+                    foodAdapter.notifyDataSetChanged()
+
+
+                }
+                for (l in adapterList){
+                    Log.i("data6",l.toString())
+
+//                    foodAdapter.addPhoto(l)
+//                    foodAdapter.notifyDataSetChanged()
+                }
+                mProgressDialog.dismiss()
+
+            }
+
+            override fun onFailure(call: Call<NetBillsResponse>, t: Throwable) {
+                Toast.makeText(applicationContext,t.message.toString(),Toast.LENGTH_SHORT).show()
+            }
+        })
+
     }
 
     private fun addingFuntion() {

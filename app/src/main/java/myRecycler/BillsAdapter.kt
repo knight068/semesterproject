@@ -60,6 +60,7 @@ class BillsAdapter(val con: Context, val billsList: MutableList<Bills>): Recycle
     fun addPhoto(bill:Bills){
         billsList.add(bill)
         notifyItemInserted(billsList.size-1)
+        notifyDataSetChanged()
     }
 
 }

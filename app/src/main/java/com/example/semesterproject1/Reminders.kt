@@ -1,6 +1,7 @@
 package com.example.semesterproject1
 
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -47,6 +48,10 @@ class Reminders : AppCompatActivity() {
             var reminderDes=etReminderDetails.text.toString().trim()
             var reminderDate=tvRemindersDate.text.toString().trim()
             var userid=SharedPrefManager.getInstance(applicationContext).user!!._id
+            val mProgressDialog = ProgressDialog(this)
+            mProgressDialog.setTitle("Please wait")
+//            mProgressDialog.setMessage("This is MESSAGE")
+            mProgressDialog.show()
             RetrofitClient.instance.postReminders(userid!!,reminderDes,reminderDate).enqueue(object :
                 Callback<RemindersAddResponse>{
                 override fun onResponse(
@@ -55,6 +60,7 @@ class Reminders : AppCompatActivity() {
                 ) {
                     var l = response.body().toString()
                     Log.i("reminders",l)
+                    mProgressDialog.dismiss()
                 }
 
                 override fun onFailure(call: Call<RemindersAddResponse>, t: Throwable) {

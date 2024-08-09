@@ -2,6 +2,7 @@ package com.example.semesterproject1
 
 import android.animation.ObjectAnimator
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -96,6 +97,10 @@ class Budget : AppCompatActivity() {
             var endDate=tvEndBudgetDate.text.toString().trim()
             var budgetAmount=etBudgetTotalAmount.text.toString().toFloat()
             val userId=SharedPrefManager.getInstance(applicationContext).user!!._id
+            val mProgressDialog = ProgressDialog(this)
+            mProgressDialog.setTitle("Please wait")
+//            mProgressDialog.setMessage("This is MESSAGE")
+            mProgressDialog.show()
 
             RetrofitClient.instance.updateBudget(userId!!,budgetAmount, startDate,endDate).enqueue(object :
                 Callback<BudgetUpdateResponse>{
@@ -104,6 +109,7 @@ class Budget : AppCompatActivity() {
                     response: Response<BudgetUpdateResponse>
                 ) {
                     Toast.makeText(applicationContext,response.body()!!.message,Toast.LENGTH_SHORT).show()
+                    mProgressDialog.dismiss()
                 }
 
                 override fun onFailure(call: Call<BudgetUpdateResponse>, t: Throwable) {
@@ -138,6 +144,10 @@ class Budget : AppCompatActivity() {
                 var padgetval=etBudgetTotalAmount.text.toString().toFloat()
                 var startDate =tvStartBudgetDate.text.toString()
                 var endDate=tvEndBudgetDate.text.toString()
+                val mProgressDialog = ProgressDialog(this)
+                mProgressDialog.setTitle("Please wait")
+//            mProgressDialog.setMessage("This is MESSAGE")
+                mProgressDialog.show()
 
 
                 RetrofitClient.instance.updateBudget(userId!!,padgetval,startDate,endDate).enqueue(object : Callback<BudgetUpdateResponse>{
@@ -179,6 +189,10 @@ class Budget : AppCompatActivity() {
 
 
             val userId=SharedPrefManager.getInstance(applicationContext).user!!._id
+            val mProgressDialog = ProgressDialog(this)
+            mProgressDialog.setTitle("Please wait")
+//            mProgressDialog.setMessage("This is MESSAGE")
+            mProgressDialog.show()
 
             RetrofitClient.instance.getBudget(userId!!).enqueue(object : Callback<GetBudgetResponse>{
                 override fun onResponse(
@@ -190,7 +204,7 @@ class Budget : AppCompatActivity() {
                     budgetAmmount.text=response.body()!!.userBudget.padget.toString()
                     currnetBudgetStart.text="Budget Start Date:\n"+response.body()!!.userBudget.StartDatePadget
                     currentBudgetEnd.text="Budget End Date:\n"+response.body()!!.userBudget.FinalDatePadget
-
+                    mProgressDialog.dismiss()
                 }
 
                 override fun onFailure(call: Call<GetBudgetResponse>, t: Throwable) {
