@@ -34,11 +34,25 @@ class TipsAndTricks : AppCompatActivity() {
             intent.putExtra("food",it)
             startActivity(intent)
         }
-        var uri = Uri.parse("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyq8Bj1EsTqhcfMn01ypklCsF7-uRqVxMAfw&s")
-        var photo = Foods( "billPhotoExtra", uri)
+        var uri = Uri.parse("https://drive.google.com/thumbnail?id=12lSKGjdpprxskmCiJY5h5FAii1PFiJ7_")
+        var photo = Foods( "taking debt is normal", uri)
         tipsAdapter.addPhoto(photo)
+        uri =Uri.parse("https://drive.google.com/thumbnail?id=138BjLx1zoOzEMntUmV9i7Jyhx8Ye1XRk")
+        photo = Foods( "7 Smart Money Habits", uri)
         tipsAdapter.addPhoto(photo)
+        uri =Uri.parse("https://drive.google.com/thumbnail?id=12xrzHyv0dt_m1S-k_s8y7iHJVBnLg8FO")
+        photo = Foods( "7 Sign of Bad Financial Health", uri)
         tipsAdapter.addPhoto(photo)
+        uri =Uri.parse("https://drive.google.com/thumbnail?id=12uhJvHVMqI9t8JQSr9srZUiGsFo4Au0S")
+        photo = Foods( "Smart Habits To Achieve Debt Free Life", uri)
+        tipsAdapter.addPhoto(photo)
+        uri =Uri.parse("https://drive.google.com/thumbnail?id=12m_fGpr-R7CZy3zj5RfFHJLtNsIXFScK")
+        photo = Foods( "Does And Don'ts Of Debt Management", uri)
+        tipsAdapter.addPhoto(photo)
+        uri =Uri.parse("https://drive.google.com/thumbnail?id=12hJ8wi7JglKhEOT8ekqUXuV0SscQ_BY4")
+        photo = Foods( "Does And Don'ts Of Debt Management", uri)
+        tipsAdapter.addPhoto(photo)
+
 
     }
     private fun bindBottomNavigation() {

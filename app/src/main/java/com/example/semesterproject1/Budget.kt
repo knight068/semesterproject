@@ -35,12 +35,14 @@ import java.util.Calendar
 import java.util.Locale
 
 class Budget : AppCompatActivity() {
-
+    var currentBudget:Int?=null
     override fun onCreate(savedInstanceState: Bundle?) {
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_budget)
         val userId=SharedPrefManager.getInstance(applicationContext).user!!._id
+        getBudget()
         bindBudget()
         progressBarBind()
         bindBottomNavigation()
@@ -175,8 +177,47 @@ class Budget : AppCompatActivity() {
 
     }
 
+    private fun getBudget() {
+        val budgetAmmount : TextView=findViewById(R.id.budgetAmmount)
+        val budgetTitle :TextView=findViewById(R.id.budgetTitle)
+        val tvStartBudgetDate=findViewById<TextView>(R.id.tvStartBudgetDate)
+        val tvEndBudgetDate:TextView=findViewById(R.id.tvEndBudgetDate)
+        val etBudgetTotalAmount:EditText=findViewById(R.id.etBudgetTotalAmount)
+        val btnSaveBudget:Button=findViewById(R.id.btnSaveBudget)
+        val btnUpdateBudget:Button=findViewById(R.id.btnUpdateBudget)
+        val currnetBudgetStart:TextView=findViewById(R.id.currnetBudgetStart)
+        val currentBudgetEnd=findViewById<TextView>(R.id.currentBudgetEnd)
+
+
+        val userId=SharedPrefManager.getInstance(applicationContext).user!!._id
+        val mProgressDialog = ProgressDialog(this)
+        mProgressDialog.setTitle("Please wait")
+//            mProgressDialog.setMessage("This is MESSAGE")
+        mProgressDialog.show()
+
+        RetrofitClient.instance.getBudget(userId!!).enqueue(object : Callback<GetBudgetResponse>{
+            override fun onResponse(
+                call: Call<GetBudgetResponse>,
+                response: Response<GetBudgetResponse>
+            ) {
+                val l=response.body()
+                Log.i("Budget",l.toString())
+                budgetAmmount.text=response.body()!!.userBudget.padget.toString()
+                currentBudget=response.body()!!.userBudget.padget
+                currnetBudgetStart.text="Budget Start Date:\n"+response.body()!!.userBudget.StartDatePadget
+                currentBudgetEnd.text="Budget End Date:\n"+response.body()!!.userBudget.FinalDatePadget
+                mProgressDialog.dismiss()
+                bindBudget()
+            }
+
+            override fun onFailure(call: Call<GetBudgetResponse>, t: Throwable) {
+                Toast.makeText(applicationContext,t.message.toString(),Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     private fun bindBudget() {
-        if (SharedPrefManager.getInstance(application).user!!.padget!=0f){
+        if (currentBudget!=null){
             val budgetAmmount : TextView=findViewById(R.id.budgetAmmount)
             val budgetTitle :TextView=findViewById(R.id.budgetTitle)
             val tvStartBudgetDate=findViewById<TextView>(R.id.tvStartBudgetDate)
@@ -188,29 +229,29 @@ class Budget : AppCompatActivity() {
             val currentBudgetEnd=findViewById<TextView>(R.id.currentBudgetEnd)
 
 
-            val userId=SharedPrefManager.getInstance(applicationContext).user!!._id
-            val mProgressDialog = ProgressDialog(this)
-            mProgressDialog.setTitle("Please wait")
-//            mProgressDialog.setMessage("This is MESSAGE")
-            mProgressDialog.show()
-
-            RetrofitClient.instance.getBudget(userId!!).enqueue(object : Callback<GetBudgetResponse>{
-                override fun onResponse(
-                    call: Call<GetBudgetResponse>,
-                    response: Response<GetBudgetResponse>
-                ) {
-                    val l=response.body()
-                    Log.i("Budget",l.toString())
-                    budgetAmmount.text=response.body()!!.userBudget.padget.toString()
-                    currnetBudgetStart.text="Budget Start Date:\n"+response.body()!!.userBudget.StartDatePadget
-                    currentBudgetEnd.text="Budget End Date:\n"+response.body()!!.userBudget.FinalDatePadget
-                    mProgressDialog.dismiss()
-                }
-
-                override fun onFailure(call: Call<GetBudgetResponse>, t: Throwable) {
-                    Toast.makeText(applicationContext,t.message.toString(),Toast.LENGTH_SHORT).show()
-                }
-            })
+//            val userId=SharedPrefManager.getInstance(applicationContext).user!!._id
+//            val mProgressDialog = ProgressDialog(this)
+//            mProgressDialog.setTitle("Please wait")
+////            mProgressDialog.setMessage("This is MESSAGE")
+//            mProgressDialog.show()
+//
+//            RetrofitClient.instance.getBudget(userId!!).enqueue(object : Callback<GetBudgetResponse>{
+//                override fun onResponse(
+//                    call: Call<GetBudgetResponse>,
+//                    response: Response<GetBudgetResponse>
+//                ) {
+//                    val l=response.body()
+//                    Log.i("Budget",l.toString())
+//                    budgetAmmount.text=response.body()!!.userBudget.padget.toString()
+//                    currnetBudgetStart.text="Budget Start Date:\n"+response.body()!!.userBudget.StartDatePadget
+//                    currentBudgetEnd.text="Budget End Date:\n"+response.body()!!.userBudget.FinalDatePadget
+//                    mProgressDialog.dismiss()
+//                }
+//
+//                override fun onFailure(call: Call<GetBudgetResponse>, t: Throwable) {
+//                    Toast.makeText(applicationContext,t.message.toString(),Toast.LENGTH_SHORT).show()
+//                }
+//            })
 
             budgetTitle.visibility=View.VISIBLE
             budgetAmmount.visibility=View.VISIBLE
@@ -221,9 +262,6 @@ class Budget : AppCompatActivity() {
             btnUpdateBudget.visibility=View.VISIBLE
             currnetBudgetStart.visibility=View.VISIBLE
             currentBudgetEnd.visibility=View.VISIBLE
-
-
-
         }
     }
 

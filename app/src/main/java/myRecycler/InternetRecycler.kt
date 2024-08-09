@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.semesterproject1.R
 import com.example.semesterproject1.api.RetrofitClient
+import com.example.semesterproject1.models.BudgetUpdateResponse
 import com.example.semesterproject1.models.NetBillsResponse
 import com.example.semesterproject1.storage.SharedPrefManager
 import de.hdodenhof.circleimageview.CircleImageView
@@ -193,17 +194,32 @@ class InternetRecycler : AppCompatActivity() {
         var ci_InternetBill :CircleImageView=findViewById(R.id.ci_InternetBill)
         var etInternetCost :EditText=findViewById(R.id.etInternetCost)
         var tvInternetDate:TextView=findViewById(R.id.tvInternetDate)
+        var etBillDescription:EditText=findViewById(R.id.etBillDescription)
+        var userId=SharedPrefManager.getInstance(applicationContext).user!!._id
+        var billDate=tvInternetDate.text.toString().trim()
+        var billValue=etInternetCost.text.toString().toInt()
+        var billDescription=etBillDescription.text.toString().trim()
+        ci_InternetBill.setOnClickListener {
+            pickNewImage()
+        }
+        RetrofitClient.instance.postNetBill(userId!!,billDescription,
+            billValue,billDate,tempUri.toString()).enqueue(object : Callback<BudgetUpdateResponse>{
+            override fun onResponse(
+                call: Call<BudgetUpdateResponse>,
+                response: Response<BudgetUpdateResponse>
+            ) {
+                Toast.makeText(applicationContext,response.body()!!.message.toString(),Toast.LENGTH_SHORT).show()
+                recreate()
+            }
 
-        var tempText = (etInternetCost.text.toString()+"\n"+tvInternetDate.text.toString())
-        var newItem =Foods(tempText,tempUri)
-//        foodAdapter.addPhoto(newItem)
-        resetContentView()
+            override fun onFailure(call: Call<BudgetUpdateResponse>, t: Throwable) {
+                Toast.makeText(applicationContext,t.message,Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
 
-    }
 
-    private fun resetContentView() {
-        setContentView(R.layout.activity_internet_recycler)
     }
 
     private fun pickNewImage() {

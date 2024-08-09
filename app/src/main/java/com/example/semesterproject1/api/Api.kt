@@ -42,6 +42,16 @@ interface Api {
         @Field("padgDate2")padgDate2:String
     ):Call<BudgetUpdateResponse>
 
+    @FormUrlEncoded
+    @POST("api/addNetBill/{userId}")
+    fun postNetBill(
+        @Path("userId")userId:String,
+        @Field("name")name:String,
+        @Field("value")value:Int,
+        @Field("date")date:String,
+        @Field("photo")photo:String
+    ):Call<BudgetUpdateResponse>
+
 
 
     @GET("api/getNetbills/{userId}")

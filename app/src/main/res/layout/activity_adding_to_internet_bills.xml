@@ -39,6 +39,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPleasesInterEmail" />
+
+    <EditText
+        android:id="@+id/etBillDescription"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/et_log_in"
+        android:hint="Bill Description"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/etLogInPassowrd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPleasesInterEmail" />
+
     <TextView
         android:id="@+id/tvInternetDate"
         android:layout_width="300dp"
