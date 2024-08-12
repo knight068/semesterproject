@@ -112,6 +112,7 @@ class Budget : AppCompatActivity() {
                 ) {
                     Toast.makeText(applicationContext,response.body()!!.message,Toast.LENGTH_SHORT).show()
                     mProgressDialog.dismiss()
+                    recreate()
                 }
 
                 override fun onFailure(call: Call<BudgetUpdateResponse>, t: Throwable) {
@@ -290,17 +291,7 @@ class Budget : AppCompatActivity() {
     }
 
     private fun progressBarBind() {
-        var pbBudget: ProgressBar=findViewById(R.id.pbBudget)
-        var etBudgetTotalAmount = findViewById<EditText>(R.id.etBudgetTotalAmount)
-        if(etBudgetTotalAmount!=null) {
-            pbBudget.visibility=View.VISIBLE
-            //var currentBudget= etBudgetTotalAmount.text.toString().toInt()
-            pbBudget.max = 500
-            pbBudget.progress = 300
-            pbBudget.progressTintList = ColorStateList.valueOf(Color.CYAN)
-//       var pbAnimator = ObjectAnimator.ofInt(pbBudget,"pbBudget",currentProgress,500)
-//            pbAnimator.duration=2000
-//        pbAnimator.start()}
-        }
+
+
     }
 }

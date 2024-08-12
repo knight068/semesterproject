@@ -1,5 +1,6 @@
 package com.example.semesterproject1.api
 
+import android.net.Uri
 import com.example.semesterproject1.models.BudgetUpdateResponse
 import com.example.semesterproject1.models.DefaultResponse
 import com.example.semesterproject1.models.GetBudgetResponse
@@ -42,6 +43,7 @@ interface Api {
         @Field("padgDate2")padgDate2:String
     ):Call<BudgetUpdateResponse>
 
+
     @FormUrlEncoded
     @POST("api/addNetBill/{userId}")
     fun postNetBill(
@@ -49,7 +51,36 @@ interface Api {
         @Field("name")name:String,
         @Field("value")value:Int,
         @Field("date")date:String,
-        @Field("photo")photo:String
+        @Field("imgUri")imgUri:String
+    ):Call<BudgetUpdateResponse>
+    @FormUrlEncoded
+    @POST("api/addElectBill/{userId}")
+    fun postEleBill(
+        @Path("userId")userId:String,
+        @Field("name")name:String,
+        @Field("value")value:Int,
+        @Field("date")date:String,
+        @Field("imgUri")imgUri:String
+    ):Call<BudgetUpdateResponse>
+
+    @FormUrlEncoded
+    @POST("api/addWaterBill/{userId}")
+    fun postWaterBill(
+        @Path("userId")userId:String,
+        @Field("name")name:String,
+        @Field("value")value:Int,
+        @Field("date")date:String,
+        @Field("imgUri")imgUri:String
+    ):Call<BudgetUpdateResponse>
+
+    @FormUrlEncoded
+    @POST("api/addPhoneBill/{userId}")
+    fun postPhoneBill(
+        @Path("userId")userId:String,
+        @Field("name")name:String,
+        @Field("value")value:Int,
+        @Field("date")date:String,
+        @Field("imgUri")imgUri:String
     ):Call<BudgetUpdateResponse>
 
 

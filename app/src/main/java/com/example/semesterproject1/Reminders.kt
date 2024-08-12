@@ -60,11 +60,13 @@ class Reminders : AppCompatActivity() {
                 ) {
                     var l = response.body().toString()
                     Log.i("reminders",l)
+                    Toast.makeText(applicationContext,"Success",Toast.LENGTH_SHORT).show()
                     mProgressDialog.dismiss()
                 }
 
                 override fun onFailure(call: Call<RemindersAddResponse>, t: Throwable) {
                    Toast.makeText(applicationContext,t.message,Toast.LENGTH_SHORT).show()
+                    mProgressDialog.dismiss()
                 }
 
             })

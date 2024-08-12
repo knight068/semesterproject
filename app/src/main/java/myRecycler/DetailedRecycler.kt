@@ -1,5 +1,6 @@
 package myRecycler
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -15,14 +16,17 @@ class DetailedRecycler : AppCompatActivity() {
         if (food!= null){
             var textView : TextView = findViewById(R.id.tvBillsInfo)
             var imageView : ImageView = findViewById(R.id.ivDetailed)
-            textView.text =food.name
+            textView.text=food.name
+            Glide.with(applicationContext).load(food.uri).into(imageView)
+
+
 //            Glide.with(applicationContext).load(food.uri).into(imageView)
-            val myOptions = RequestOptions().override(350, 600)
-            Glide.with(this)
-                .asBitmap()
-                .apply(myOptions)
-                .load(food.uri)
-                .into(imageView)
+//            val myOptions = RequestOptions().override(350, 600)
+//            Glide.with(this)
+//                .asBitmap()
+//                .apply(myOptions)
+//                .load(food.uri)
+//                .into(imageView)
         }
     }
 }

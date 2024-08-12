@@ -35,6 +35,7 @@
         android:layout_margin="5dp"
         tools:visibility="visible"
         android:visibility="gone"
+
         />
     <TextView
         android:id="@+id/budgetAmmount"
@@ -118,16 +119,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPleasesInterEmail"
         android:inputType="number"/>
-    <ProgressBar
-        android:id="@+id/pbBudget"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="60dp"
-        android:scaleY="2"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:visibility="gone"
-        />
+
 
 
     <androidx.appcompat.widget.AppCompatButton

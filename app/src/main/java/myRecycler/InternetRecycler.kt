@@ -19,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.semesterproject1.R
+import com.example.semesterproject1.TestingAPi
 import com.example.semesterproject1.api.RetrofitClient
 import com.example.semesterproject1.models.BudgetUpdateResponse
 import com.example.semesterproject1.models.NetBillsResponse
@@ -33,24 +34,7 @@ import java.util.Calendar
 import java.util.Locale
 
 class InternetRecycler : AppCompatActivity() {
-//    private val secondActivityLauncher =
-//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == Activity.RESULT_OK) {
-//                val data: Intent? = result.data
-//                var billInfo = data?.getStringExtra("text")
-//                var billImageUri = data?.getStringExtra("image")
-//                var tempUri = Uri.parse(billImageUri)
-//                val photo = Foods( billInfo!!, tempUri)
-//                foodAdapter.addPhoto(photo)
-//                Toast.makeText(this,billInfo+billImageUri,Toast.LENGTH_SHORT).show()
-////                val photo = Foods( billInfo!!, tempUri)
-////                foodAdapter.addPhoto(photo)
-////                foodAdapter.notifyDataSetChanged()
-//
-//
-//
-//            }
-//        }
+
     private  lateinit var tempUri: Uri
     private lateinit var recyclerView: RecyclerView
     private lateinit var foodAdapter:BillsAdapter
@@ -60,25 +44,17 @@ class InternetRecycler : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_internet_recycler)
         getBills()
-
-
-
-
+        bindRecycler()
         findViewById<View>(android.R.id.content).setOnClickListener{
             foodAdapter.notifyDataSetChanged()
         }
-
-
-
-//        if(billInfoFromExtra!=null&&billPhotoExtra!=null){
-//            val photo = Foods( billPhotoExtra!!, tempUri)
-//            foodAdapter.addPhoto(photo)
-//        }
-
-
         var ibInternetAdd = findViewById<ImageButton>(R.id.ibInternetAdd)
+        ibInternetAdd.setOnClickListener {
+            changeToAddingScreen()
+    }
+    }
 
-
+    private fun bindRecycler() {
         recyclerView = findViewById(R.id.internetRecyclerView)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -90,56 +66,47 @@ class InternetRecycler : AppCompatActivity() {
             intent.putExtra("food", it)
             startActivity(intent)
         }
-        val image=Uri.parse("https://drive.google.com/thumbnail?id=1By-TiWOwAE38bvVPjcZ4uYzq83ZDgrDz")
+        val image=Uri.parse("https://www.dewa.gov.ae/images/EasyPay/greenbill-ar.jpg")
         var tempBill=Bills("someDetails",5000f,"2022",image)
         foodAdapter.addPhoto(tempBill)
-
-
-
-        ibInternetAdd.setOnClickListener {
-//            val intent = Intent(this, AddingToInternetBills::class.java)
-//            secondActivityLauncher.launch(intent)
-            setContentView(R.layout.activity_adding_to_internet_bills)
-            var btnAddInternetBill :Button=findViewById(R.id.btnAddInternetBill)
-            var ci_InternetBill :CircleImageView=findViewById(R.id.ci_InternetBill)
-            var etInternetCost :EditText=findViewById(R.id.etInternetCost)
-            var tvInternetDate:TextView=findViewById(R.id.tvInternetDate)
-
-            ci_InternetBill.setOnClickListener {
-                pickNewImage()
-            }
-            btnAddInternetBill.setOnClickListener {
-                addingFuntion()
-
-            }
-            val cal = Calendar.getInstance()
-            val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, monthOfYear)
-                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-
-                val myFormat = "dd.MM.yyyy"
-                val sdf = SimpleDateFormat(myFormat, Locale.US)
-                tvInternetDate.text = sdf.format(cal.time)
-            }
-            tvInternetDate.setOnClickListener {
-                DatePickerDialog(
-                    this,
-                    dateSetListener,
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)
-                ).show()
-            }
-
-
-
-        }
     }
 
-    private suspend fun updateRecycler() {
-        delay(500L)
-        foodAdapter.notifyDataSetChanged()
+    private fun changeToAddingScreen() {
+        setContentView(R.layout.activity_adding_to_internet_bills)
+        var btnAddInternetBill :Button=findViewById(R.id.btnAddInternetBill)
+        var ci_InternetBill :CircleImageView=findViewById(R.id.ci_InternetBill)
+        var etInternetCost :EditText=findViewById(R.id.etInternetCost)
+        var tvInternetDate:TextView=findViewById(R.id.tvInternetDate)
+
+        ci_InternetBill.setOnClickListener {
+            pickNewImage()
+        }
+        btnAddInternetBill.setOnClickListener {
+            addingFuntion()
+
+        }
+        val cal = Calendar.getInstance()
+        val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val myFormat = "yyyy-MM-dd"
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            tvInternetDate.text = sdf.format(cal.time)
+        }
+        tvInternetDate.setOnClickListener {
+            DatePickerDialog(
+                this,
+                dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
+
+
     }
 
     private fun getBills() {
@@ -184,12 +151,14 @@ class InternetRecycler : AppCompatActivity() {
 
             override fun onFailure(call: Call<NetBillsResponse>, t: Throwable) {
                 Toast.makeText(applicationContext,t.message.toString(),Toast.LENGTH_SHORT).show()
+                mProgressDialog.dismiss()
             }
         })
 
     }
 
     private fun addingFuntion() {
+
         var btnAddInternetBill :Button=findViewById(R.id.btnAddInternetBill)
         var ci_InternetBill :CircleImageView=findViewById(R.id.ci_InternetBill)
         var etInternetCost :EditText=findViewById(R.id.etInternetCost)
@@ -202,12 +171,16 @@ class InternetRecycler : AppCompatActivity() {
         ci_InternetBill.setOnClickListener {
             pickNewImage()
         }
+
+        if(!tvInternetDate.text.isEmpty()&&!etInternetCost.text.isEmpty()&&
+            !etBillDescription.text.isEmpty()){
         RetrofitClient.instance.postNetBill(userId!!,billDescription,
-            billValue,billDate,tempUri.toString()).enqueue(object : Callback<BudgetUpdateResponse>{
+           billValue,billDate,"https://www.dewa.gov.ae/images/EasyPay/greenbill-ar.jpg").enqueue(object : Callback<BudgetUpdateResponse>{
             override fun onResponse(
                 call: Call<BudgetUpdateResponse>,
                 response: Response<BudgetUpdateResponse>
             ) {
+                Log.i("data",response.body()!!.message.toString())
                 Toast.makeText(applicationContext,response.body()!!.message.toString(),Toast.LENGTH_SHORT).show()
                 recreate()
             }
@@ -217,6 +190,9 @@ class InternetRecycler : AppCompatActivity() {
             }
 
         })
+        }else{
+            Toast.makeText(applicationContext,"Please fill all the fields",Toast.LENGTH_SHORT).show()
+        }
 
 
 
