@@ -23,6 +23,7 @@ interface Api {
         @Field("name") name:String,
         @Field("email") email:String,
         @Field("password") password:String,
+        @Field("address") address:String,
         @Field("city") city:String
 
     ):Call<DefaultResponse>

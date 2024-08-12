@@ -1,5 +1,6 @@
 package com.example.semesterproject1
 
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +45,10 @@ class MainActivity : AppCompatActivity() {
             var etLogInPassword :EditText=findViewById(R.id.etLogInPassword)
             val email=etLogInEmail.text.toString().trim()
             val password =etLogInPassword.text.toString().trim()
+            val mProgressDialog = ProgressDialog(this)
+            mProgressDialog.setTitle("Please wait")
+//            mProgressDialog.setMessage("This is MESSAGE")
+            mProgressDialog.show()
 
 
             RetrofitClient.instance.logInUser(email,password).enqueue(object :Callback<LogInResponse>{
@@ -51,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                     call: Call<LogInResponse>,
                     response: Response<LogInResponse>
                 ) {
+
                     var l = response.body()
                     Log.i("data",l.toString())
                     Toast.makeText(applicationContext,l.toString(),Toast.LENGTH_LONG).show()
@@ -58,11 +64,13 @@ class MainActivity : AppCompatActivity() {
                     val intent =Intent(applicationContext,MainScreen::class.java)
                     intent.flags =Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_CLEAR_TASK
                    startActivity(intent)
+                    mProgressDialog.dismiss()
 
                 }
 
                 override fun onFailure(call: Call<LogInResponse>, t: Throwable) {
                     Toast.makeText(applicationContext,t.message.toString(),Toast.LENGTH_SHORT).show()
+                    mProgressDialog.dismiss()
                 }
 
             })

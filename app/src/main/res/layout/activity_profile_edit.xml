@@ -99,20 +99,45 @@
              />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnGoToReport"
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/loginbutton"
-        android:outlineAmbientShadowColor="@color/white"
-        android:text="Financial Report"
-        android:textColor="@color/teal_200"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGoToReport"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/loginbutton"
+            android:outlineAmbientShadowColor="@color/white"
+            android:text="Financial Report"
+            android:textColor="@color/teal_200"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGoToChart"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/loginbutton"
+            android:outlineAmbientShadowColor="@color/green"
+            android:text="Financial Chart"
+            android:textColor="@color/green"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"

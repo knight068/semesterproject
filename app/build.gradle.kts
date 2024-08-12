@@ -7,6 +7,7 @@ android {
     namespace = "com.example.semesterproject1"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.example.semesterproject1"
         minSdk = 26
@@ -16,6 +17,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -48,8 +50,11 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.google.android.gms:play-services-base:18.5.0")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
-    implementation ("com.itextpdf:itextg:5.5.10")
     implementation("androidx.compose.foundation:foundation-android:1.6.8")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

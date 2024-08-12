@@ -1,5 +1,6 @@
 package com.example.semesterproject1
 
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -39,12 +40,15 @@ class registerActivity : AppCompatActivity() {
             var etRegisterPassword = findViewById<EditText>(R.id.etRegisterPassword)
             var etRegisterUserName = findViewById<EditText>(R.id.etRegisterUserName)
             var etReInterPassword = findViewById<EditText>(R.id.etReInterPassword)
+            var etRegisterUserAddress=findViewById<EditText>(R.id.etRegisterUserAddress)
+
 
             var email=etRegisterEmail.text.toString().trim()
             var password =etRegisterPassword.text.toString().trim()
             var conPassword =etReInterPassword.text.toString().trim()
             var  city =etRegisterCity.text.toString().trim()
             var userNmae=etRegisterUserName.text.toString().trim()
+            var address =etRegisterUserAddress.text.toString().trim()
 
             if (email.isEmpty()) {
                 etRegisterEmail.error="Email required"
@@ -61,15 +65,24 @@ class registerActivity : AppCompatActivity() {
                 etRegisterCity.requestFocus()
                 return@setOnClickListener
             }
+            if (address.isEmpty()) {
+                etRegisterUserAddress.error="Address required"
+                etRegisterUserAddress.requestFocus()
+                return@setOnClickListener
+            }
             if (userNmae.isEmpty()) {
                 etRegisterUserName.error="UserName required"
                 etRegisterUserName.requestFocus()
                 return@setOnClickListener
             }
             if (password!=conPassword){
-                Toast.makeText(this,"passowrd mis match",Toast.LENGTH_SHORT).show()
-            }
-            RetrofitClient.instance.createUser(userNmae ,email ,password,city).enqueue(object:Callback<DefaultResponse>{
+                Toast.makeText(this,"password mis match",Toast.LENGTH_SHORT).show()
+            }else{
+                val mProgressDialog = ProgressDialog(this)
+                mProgressDialog.setTitle("Please wait")
+//            mProgressDialog.setMessage("This is MESSAGE")
+                mProgressDialog.show()
+            RetrofitClient.instance.createUser(userNmae ,email ,password,address,city).enqueue(object:Callback<DefaultResponse>{
                 override fun onResponse(
                     call: Call<DefaultResponse>,
                     response: Response<DefaultResponse>
@@ -78,13 +91,16 @@ class registerActivity : AppCompatActivity() {
                         response.body()?.message.toString(),Toast.LENGTH_SHORT).show()
                     var temp = response.body()
                     Log.i("data",temp.toString())
+                    startActivity(Intent(applicationContext,MainActivity::class.java))
+                    mProgressDialog.dismiss()
                 }
 
                 override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                     Toast.makeText(applicationContext,t.message.toString(),Toast.LENGTH_SHORT).show()
+                    mProgressDialog.dismiss()
                 }
 
-            })
+            })}
 
 
 //            checkRegister()

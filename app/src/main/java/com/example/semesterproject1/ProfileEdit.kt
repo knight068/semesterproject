@@ -24,6 +24,12 @@ class ProfileEdit : AppCompatActivity() {
             val intent=Intent(this,CreatingReport::class.java)
             startActivity(intent)
         }
+        val btnGoToChart=findViewById<Button>(R.id.btnGoToChart)
+        btnGoToChart.setOnClickListener {
+            val intent=Intent(this,ChartActiviy::class.java)
+            startActivity(intent)
+        }
+
 
         val btnLogOut :Button=findViewById(R.id.btn_LogOut)
         btnLogOut.setOnClickListener {
