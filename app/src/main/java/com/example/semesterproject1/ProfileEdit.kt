@@ -2,6 +2,7 @@ package com.example.semesterproject1
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -13,7 +14,6 @@ import myRecycler.TipsAndTricks
 
 class ProfileEdit : AppCompatActivity() {
     private val PICK_IMAGE_REQUEST = 1
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_edit)

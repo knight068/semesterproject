@@ -2,6 +2,7 @@ package com.example.semesterproject1.api
 
 import android.net.Uri
 import com.example.semesterproject1.models.BudgetUpdateResponse
+import com.example.semesterproject1.models.ClothBillResponse
 import com.example.semesterproject1.models.DefaultResponse
 import com.example.semesterproject1.models.GetBudgetResponse
 import com.example.semesterproject1.models.LogInResponse
@@ -75,8 +76,39 @@ interface Api {
     ):Call<BudgetUpdateResponse>
 
     @FormUrlEncoded
+    @POST("api/addFoodBill/{userId}")
+    fun postFoodBill(
+        @Path("userId")userId:String,
+        @Field("name")name:String,
+        @Field("value")value:Int,
+        @Field("date")date:String,
+        @Field("imgUri")imgUri:String
+    ):Call<BudgetUpdateResponse>
+
+    @FormUrlEncoded
     @POST("api/addPhoneBill/{userId}")
     fun postPhoneBill(
+        @Path("userId")userId:String,
+        @Field("name")name:String,
+        @Field("value")value:Int,
+        @Field("date")date:String,
+        @Field("imgUri")imgUri:String
+    ):Call<BudgetUpdateResponse>
+
+    @FormUrlEncoded
+    @POST("api/addClothesBill/{userId}")
+    fun postClothBill(
+        @Path("userId")userId:String,
+        @Field("name")name:String,
+        @Field("value")value:Int,
+        @Field("brand")brand:String,
+        @Field("date")date:String,
+        @Field("imgUri")imgUri:String
+    ):Call<BudgetUpdateResponse>
+
+    @FormUrlEncoded
+    @POST("api/addOtherBill/{userId}")
+    fun postOtherBill(
         @Path("userId")userId:String,
         @Field("name")name:String,
         @Field("value")value:Int,
@@ -105,6 +137,16 @@ interface Api {
     fun getPhoneBills(
         @Path("userId")userId:String
     ):Call<NetBillsResponse>
+
+    @GET("api/getFoodbills/{userId}")
+    fun getFoodBills(
+        @Path("userId")userId:String
+    ):Call<NetBillsResponse>
+
+    @GET("api/getClothebills/{userId}")
+    fun getClothBills(
+        @Path("userId")userId:String
+    ):Call<ClothBillResponse>
 
     @GET("api/getOtherbills/{userId}")
     fun getOtherBills(
